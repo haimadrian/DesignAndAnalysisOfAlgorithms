@@ -17,19 +17,21 @@ public class SuffixTrie implements AlgorithmIfc {
     @Override
     public void execute() {
         // Arrange
+        text = readLine("Enter text to build a suffix-trie for: (for example: bananabanana)");
         if (!text.endsWith("$")) {
             text += "$";
         }
 
         //String pattern = "\tBangin' on my drum\n\tBangin' on my drum";
-        String pattern = "ana";
+        String pattern = readLine("Enter pattern to lookup for in the tree: (for example: ana)");
 
         // First build a tree with a node for each character
         // Build and compression are very inefficient but nvm.. Assume it is linear
         SuffixTreeNode root = buildTree();
 
         // You can print the tree here in case you need to see the node-per-character structure
-        //System.out.println(root.toTreeString());
+        System.out.println("Tree before compression:");
+        System.out.println(root.toTreeString());
 
         // Second, compress the tree. (Join nodes)
         compressTree(root);

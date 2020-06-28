@@ -13,28 +13,33 @@ public class KMP implements AlgorithmIfc{
     @Override
     public void execute() {
         // Arrange
-        String longPattern = "ababbabbababbababbabb";
-        String text = getNoaKilaLyrics();
-        String pattern = "\tBangin' on my drum\n\tBangin' on my drum";
+        //String longPattern = "ababbabbababbababbabb";
+        String longPattern = readLine("Enter pattern to compute prefix (PI) for: (for example: ababbabbababbababbabb)");
+        boolean search = readLine("Would you like to see full search example in action? (y/n)").trim().equalsIgnoreCase("Y");
 
         // Act
         ActionResult<int[]> piForLongPattern = computePrefix(longPattern);
-        ActionResult<int[]> piForNoaKilaPattern = computePrefix(pattern);
-        ActionResult<List<Integer>> patternOccurrences = kmpMatcher(text, pattern, piForNoaKilaPattern.getResult());
 
         // Output
         System.out.println("Pattern: " + longPattern);
         System.out.println(Arrays.toString(longPattern.toCharArray()));
         System.out.println(Arrays.toString(piForLongPattern.getResult()));
         System.out.println(piForLongPattern.getStepsCount() + " steps took to compute prefix");
-        System.out.println();
-        System.out.println("Text is: " + System.lineSeparator() + text);
-        System.out.println("Pattern: " + System.lineSeparator() + "\"" + pattern + "\"");
-        System.out.println("PI: " + Arrays.toString(piForNoaKilaPattern.getResult()));
-        System.out.println("|T| = " + text.length() + ",    |P| = " + pattern.length());
-        System.out.println(piForNoaKilaPattern.getStepsCount() + " steps took to compute prefix");
-        System.out.println(patternOccurrences.getStepsCount() + " steps took to find all occurrences of pattern in text - O(|T|+|P|)");
-        System.out.println("Occurrences of pattern in text are at: " + patternOccurrences.getResult());
+
+        if (search) {
+            String text = getNoaKilaLyrics();
+            String pattern = "\tBangin' on my drum\n\tBangin' on my drum";
+            ActionResult<int[]> piForNoaKilaPattern = computePrefix(pattern);
+            ActionResult<List<Integer>> patternOccurrences = kmpMatcher(text, pattern, piForNoaKilaPattern.getResult());
+            System.out.println();
+            System.out.println("Text is: " + System.lineSeparator() + text);
+            System.out.println("Pattern: " + System.lineSeparator() + "\"" + pattern + "\"");
+            System.out.println("PI: " + Arrays.toString(piForNoaKilaPattern.getResult()));
+            System.out.println("|T| = " + text.length() + ",    |P| = " + pattern.length());
+            System.out.println(piForNoaKilaPattern.getStepsCount() + " steps took to compute prefix");
+            System.out.println(patternOccurrences.getStepsCount() + " steps took to find all occurrences of pattern in text - O(|T|+|P|)");
+            System.out.println("Occurrences of pattern in text are at: " + patternOccurrences.getResult());
+        }
     }
 
     private ActionResult<List<Integer>> kmpMatcher(CharSequence text, CharSequence pattern, int[] pi) {

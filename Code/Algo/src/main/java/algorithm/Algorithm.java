@@ -15,6 +15,7 @@ public enum Algorithm {
     millerRabin("Miller-Rabin", MillerRabin.class),
     repeatedSquares("Method of repeated squares", RepeatedSquares.class),
     huffmanCoding("Huffman-Coding", HuffmanCoding.class),
+    masterTheorem("Master-Theorem: T(n)=aT(n/b)+f(n)", MasterTheorem.class),
     unknown(null, null);
 
     private final String title;

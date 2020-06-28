@@ -11,9 +11,25 @@ public class HuffmanCoding implements AlgorithmIfc {
 
     @Override
     public void execute() {
-        String text = "aaaaaaaaaabbbbbbbbbbccccddddef";
+        boolean isText = readLine("Would you like to enter a text? (y/n) - n means entering the frequency for each character manually").trim().equalsIgnoreCase("y");
 
-        HuffmanTreeNode root = buildHuffmanTree(text);
+        Map<Character, Long> charFrequency;
+        if (isText) {
+            String text = readLine("Enter text: (for example: aaaaaaaaaabbbbbbbbbbccccddddef)");
+            charFrequency = countCharacters(text);
+        } else {
+            charFrequency = new HashMap<>();
+            int chars = readInt("How many characters would you like to scan? (for example: 6)");
+            System.out.println("You will be asked to enter " + chars + " pairs now. First parameter is the char and second one " +
+                               "is the frequency of that char. For example:" + System.lineSeparator() +
+                               "a" + System.lineSeparator() +
+                               "10");
+            for (int i = 0; i < chars; i++) {
+                charFrequency.put(Character.valueOf(readLine("").charAt(0)), Long.valueOf(readInt("")));
+            }
+        }
+
+        HuffmanTreeNode root = buildHuffmanTree(charFrequency);
 
         System.out.println("Huffman code generation:");
         System.out.println("The format is - [c, f(c)]: code,    where c = char, f(c) = frequency");
@@ -23,19 +39,12 @@ public class HuffmanCoding implements AlgorithmIfc {
         System.out.println(root.toTreeString());
     }
 
-    private HuffmanTreeNode buildHuffmanTree(String text) {
+    private HuffmanTreeNode buildHuffmanTree(Map<Character, Long> charFrequency) {
         HuffmanTreeNode root = null;
-        Map<Character, Long> charFrequency = new HashMap<>();
-
-        // Count the frequency of each character. O(n)
-        for (char c : text.toCharArray()) {
-            Character currKey = Character.valueOf(c);
-            charFrequency.merge(currKey, Long.valueOf(1), (existingValue, newValue) -> Long.valueOf(existingValue.longValue() + newValue.longValue()));
-        }
 
         // Create a minimum heap so we can poll two minimum elements in O(1).
-        PriorityQueue<HuffmanTreeNode> minHeap = new PriorityQueue<HuffmanTreeNode>(charFrequency.size(),
-                                                                                    Comparator.comparingLong(node -> node.count));
+        PriorityQueue<HuffmanTreeNode> minHeap = new PriorityQueue<>(charFrequency.size(), Comparator.comparingLong(node -> node.count));
+
         // Add nodes to heap - O(logn)
         charFrequency.forEach((currChar, currFrequency) -> minHeap.add(new HuffmanTreeNode(currChar, currFrequency.longValue(), null, null)));
 
@@ -65,6 +74,17 @@ public class HuffmanCoding implements AlgorithmIfc {
         }
 
         return root;
+    }
+
+    private Map<Character, Long> countCharacters(String text) {
+        Map<Character, Long> charFrequency = new HashMap<>();
+
+        // Count the frequency of each character. O(n)
+        for (char c : text.toCharArray()) {
+            Character currKey = Character.valueOf(c);
+            charFrequency.merge(currKey, Long.valueOf(1), (existingValue, newValue) -> Long.valueOf(existingValue.longValue() + newValue.longValue()));
+        }
+        return charFrequency;
     }
 
 

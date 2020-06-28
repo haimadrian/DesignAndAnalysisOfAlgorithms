@@ -19,8 +19,9 @@ public class MillerRabin implements AlgorithmIfc {
     @Override
     public void execute() {
         // Arrange
-        int num = 1105;
-        int tries = 5;
+        int num = readInt("Enter a number to check if it is a PRIME number: (for example: 1105)");
+        int tries = readInt("Enter amount of tries: (S, how many times to verify if there is a witness, e.g. 5)");
+        boolean getPrimeNumbers = readLine("Would you like to find all PRIME numbers below 1000? (y/n)").trim().equalsIgnoreCase("y");
         StringBuilder primes = new StringBuilder();
 
         // Act
@@ -31,18 +32,20 @@ public class MillerRabin implements AlgorithmIfc {
 
         // Get all prime numbers between 0 to 1000
         int count = 0;
-        for (int i = 0; i < 10; i++) {
-            primes.append(i*100).append("-").append(i*100 + 99).append(": ");
-            for (int j = 0; j < 100; j++) {
-                int n = i*100 + j;
-                if (millerRabin(n, 10).getResult().equals(PRIME)) {
-                    count++;
+        if (getPrimeNumbers) {
+            for (int i = 0; i < 10; i++) {
+                primes.append(i * 100).append("-").append(i * 100 + 99).append(": ");
+                for (int j = 0; j < 100; j++) {
+                    int n = i * 100 + j;
+                    if (millerRabin(n, 10).getResult().equals(PRIME)) {
+                        count++;
 
-                    primes.append(n).append(", ");
+                        primes.append(n).append(", ");
+                    }
                 }
+                primes.delete(primes.length() - 2, primes.length());
+                primes.append(System.lineSeparator());
             }
-            primes.delete(primes.length() - 2, primes.length());
-            primes.append(System.lineSeparator());
         }
 
         // Output
@@ -50,8 +53,11 @@ public class MillerRabin implements AlgorithmIfc {
         System.out.println("Tries: " + tries);
         System.out.println("Miller-Rabin result: " + result.getResult());
         System.out.println("It took " + result.getStepsCount() + " steps to execute the algorithm. (O(k^3) where k is the amount of bits of num) ");
-        System.out.println("All primes below 1000: (" + count + " numbers)");
-        System.out.println(primes.toString());
+
+        if (getPrimeNumbers) {
+            System.out.println("All primes below 1000: (" + count + " numbers)");
+            System.out.println(primes.toString());
+        }
     }
 
     /**
