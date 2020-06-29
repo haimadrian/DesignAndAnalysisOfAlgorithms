@@ -81,5 +81,9 @@ public interface AlgorithmIfc {
 
         return result;
     }
+
+    default boolean readYesNo(String instruction) {
+        return readLine(instruction).trim().equalsIgnoreCase("y");
+    }
 }
 

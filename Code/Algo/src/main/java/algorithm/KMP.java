@@ -15,7 +15,7 @@ public class KMP implements AlgorithmIfc{
         // Arrange
         //String longPattern = "ababbabbababbababbabb";
         String longPattern = readLine("Enter pattern to compute prefix (PI) for: (for example: ababbabbababbababbabb)");
-        boolean search = readLine("Would you like to see full search example in action? (y/n)").trim().equalsIgnoreCase("Y");
+        boolean search = readYesNo("Would you like to see full search example in action? (y/n)");
 
         // Act
         ActionResult<int[]> piForLongPattern = computePrefix(longPattern);

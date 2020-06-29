@@ -21,7 +21,7 @@ public class MillerRabin implements AlgorithmIfc {
         // Arrange
         int num = readInt("Enter a number to check if it is a PRIME number: (for example: 1105)");
         int tries = readInt("Enter amount of tries: (S, how many times to verify if there is a witness, e.g. 5)");
-        boolean getPrimeNumbers = readLine("Would you like to find all PRIME numbers below 1000? (y/n)").trim().equalsIgnoreCase("y");
+        boolean getPrimeNumbers = readYesNo("Would you like to find all PRIME numbers below 1000? (y/n)");
         StringBuilder primes = new StringBuilder();
 
         // Act
@@ -30,9 +30,15 @@ public class MillerRabin implements AlgorithmIfc {
         // Now, after finished the miller rabin execution, turn off the "Let n-1=(2^t)u" message
         shouldPrintUandT = false;
 
-        // Get all prime numbers between 0 to 1000
-        int count = 0;
+        // Output
+        System.out.println("Number: " + num);
+        System.out.println("Tries: " + tries);
+        System.out.println("Miller-Rabin result: " + result.getResult());
+        System.out.println("It took " + result.getStepsCount() + " steps to execute the algorithm. (O(k^3) where k is the amount of bits of num) ");
+
         if (getPrimeNumbers) {
+            // Get all prime numbers between 0 to 1000
+            int count = 0;
             for (int i = 0; i < 10; i++) {
                 primes.append(i * 100).append("-").append(i * 100 + 99).append(": ");
                 for (int j = 0; j < 100; j++) {
@@ -46,15 +52,7 @@ public class MillerRabin implements AlgorithmIfc {
                 primes.delete(primes.length() - 2, primes.length());
                 primes.append(System.lineSeparator());
             }
-        }
 
-        // Output
-        System.out.println("Number: " + num);
-        System.out.println("Tries: " + tries);
-        System.out.println("Miller-Rabin result: " + result.getResult());
-        System.out.println("It took " + result.getStepsCount() + " steps to execute the algorithm. (O(k^3) where k is the amount of bits of num) ");
-
-        if (getPrimeNumbers) {
             System.out.println("All primes below 1000: (" + count + " numbers)");
             System.out.println(primes.toString());
         }
@@ -80,7 +78,7 @@ public class MillerRabin implements AlgorithmIfc {
         }
 
         for (int i = 0; i < probabilityTries; i++) {
-            // Get a random number between 1 to num-1
+            // Get a random number between 2 to num-1
             int a = RAND.nextInt(num - 2) + 2;
 
             ActionResult<Boolean> witnessResult = witness(a, num);
@@ -116,13 +114,13 @@ public class MillerRabin implements AlgorithmIfc {
             System.out.println("Let n-1=(2^t)u, where t>=1 and u is odd:  t=" + t + ", u=" + u + ", n-1=" + (num - 1));
         }
 
-        ActionResult<Integer> modPowerResult = RepeatedSquares.modPow(candidate, u, num, false);
+        ActionResult<Long> modPowerResult = RepeatedSquares.modPow(candidate, u, num, false);
 
         // Count that amount of steps occur because of the multiplication: k^2, which happens
         // in a loop until t, where t is also a k bits number. Witness complexity: k^3
         result.add(modPowerResult);
 
-        double lastMod = modPowerResult.getResult().intValue(), currMod;
+        double lastMod = modPowerResult.getResult().longValue(), currMod;
         for (int i = 0; i < t; i++) {
             currMod = (lastMod*lastMod) % num;
 

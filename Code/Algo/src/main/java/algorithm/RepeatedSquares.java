@@ -2,6 +2,7 @@ package algorithm;
 
 import util.ActionResult;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 
 /**
@@ -13,18 +14,36 @@ public class RepeatedSquares implements AlgorithmIfc {
     @Override
     public void execute() {
         // Arrange
-        int[] witnesses = new int[] { 2, 6, 8, 12, 34 };
-        int[] numbers = new int[] { 83, 1105, 1015 };
+        int[] witnesses;
+        int num = readInt("Enter a number to run the method of repeated squares on: (for example: 1105 or 83)");
+        boolean useRandomWitnesses = readYesNo("Should we generate random witnesses? (y/n) - n means that you specify the witnesses");
 
-        for (int i = 0; i < numbers.length; i++) {
-            for (int j = 0; j < witnesses.length; j++) {
-                repeatedSquaresMethod(witnesses[j], numbers[i]);
+        if (!useRandomWitnesses) {
+            int witnessesCount = readInt("How many witnesses would you like to enter?");
+            witnesses = new int[witnessesCount];
+
+            System.out.println("Enter " + witnessesCount + " witnesses. (between 2 to " + (num-1) + " inclusive)");
+            for (int i = 0; i < witnessesCount; i++) {
+                witnesses[i] = readInt("");
             }
-            System.out.println();
+        } else {
+            SecureRandom rand = new SecureRandom();
+            int witnessesCount = 4;
+            witnesses = new int[witnessesCount];
+
+            // Get random numbers between 2 to num-1
+            for (int i = 0; i < witnessesCount; i++) {
+                witnesses[i] = rand.nextInt(num - 2) + 2;
+            }
         }
+
+        for (int i = 0; i < witnesses.length; i++) {
+            repeatedSquaresMethod(witnesses[i], num);
+        }
+        System.out.println();
     }
 
-    private ActionResult<Integer> repeatedSquaresMethod(int witness, int num) {
+    private ActionResult<Long> repeatedSquaresMethod(int witness, int num) {
         // Let n-1=(2^t)u, where t>=1 and u is odd
         int t = 1, u = num - 1;
         while (((u = u/2) % 2) == 0) {
@@ -33,7 +52,7 @@ public class RepeatedSquares implements AlgorithmIfc {
 
         System.out.println("Let n-1=(2^t)u, where t>=1 and u is odd:  t=" + t + ", u=" + u + ", n-1=" + (num - 1));
 
-        ActionResult<Integer> modPowerResult = modPow(witness, u, num, true);
+        ActionResult<Long> modPowerResult = modPow(witness, u, num, true);
         return modPowerResult;
     }
 
@@ -44,8 +63,8 @@ public class RepeatedSquares implements AlgorithmIfc {
      * @param n
      * @return
      */
-    public static ActionResult<Integer> modPow(long a, long b, long n, boolean printData) {
-        ActionResult<Integer> result = new ActionResult<>();
+    public static ActionResult<Long> modPow(long a, long b, long n, boolean printData) {
+        ActionResult<Long> result = new ActionResult<>();
 
         // Get binary bits
         String binary = Long.toBinaryString(b);
@@ -75,7 +94,7 @@ public class RepeatedSquares implements AlgorithmIfc {
             System.out.println("Result: " + res + ".    Steps took: " + result.getStepsCount() + " - O(k^3) where k is num of bits");
         }
 
-        result.setResult(Integer.valueOf((int) res));
+        result.setResult(Long.valueOf(res));
         return result;
     }
 }
