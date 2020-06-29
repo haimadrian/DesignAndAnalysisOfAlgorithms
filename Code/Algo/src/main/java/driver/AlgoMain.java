@@ -28,13 +28,13 @@ public class AlgoMain {
                 System.out.println("Unknown choice, please try again carpenter..");
             } else {
                 try {
-                    System.out.println("========================= " + userChoice.getTitle() + " =========================");
+                    System.out.println("============================== " + userChoice.getTitle() + " ==============================");
                     userChoice.newInstance().execute();
                 } catch (Exception e) {
                     System.err.println("Something went wrong while trying to execute the " + userChoice.name() + " algorithm.");
                     e.printStackTrace();
                 } finally {
-                    System.out.println("====================================================================");
+                    System.out.println("===================================================================================");
                 }
             }
 

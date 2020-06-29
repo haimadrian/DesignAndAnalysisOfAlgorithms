@@ -16,6 +16,7 @@ public enum Algorithm {
     repeatedSquares("Method of repeated squares", RepeatedSquares.class),
     huffmanCoding("Huffman-Coding", HuffmanCoding.class),
     masterTheorem("Master-Theorem: T(n)=aT(n/b)+f(n)", MasterTheorem.class),
+    matrixChainMultiplication("Matrix-Chain-Multiplication", MatrixChainMultiplication.class),
     unknown(null, null);
 
     private final String title;
