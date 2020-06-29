@@ -13,16 +13,17 @@ public class MatrixChainMultiplication implements AlgorithmIfc {
 
     @Override
     public void execute() {
-        int matrixCount = readInt("How many matrices? (for example: 5 in case there are A,B,C,D,E)");
+        int matrixCount = readInt("How many matrices? (for example: 4 in case there are A,B,C,D)");
         int[] matricesDimension = new int[matrixCount + 1];
         System.out.println("Enter the vector representing the matrices dimension. (length=" + (matrixCount + 1) + ")");
+        System.out.println("(for example: 5 2 10 5 3, those are the dimensions from the presentation. Result will be: 160)");
         for (int i = 0; i < matrixCount + 1; i++) {
             matricesDimension[i] = readInt("");
         }
 
         matrixChainOrder(matricesDimension);
 
-        System.out.println("\nTotal cost can be found at [0," + (matrixCount-1) + "]");
+        System.out.println("\nTotal cost can be found at [0," + (matrixCount-1) + "]:  " + m[0][matrixCount-1] + "    - O(n^3)");
         System.out.println(matrixToString(m));
         System.out.println("\nHere is the matrix that tells where to put the parentheses");
         System.out.println(matrixToString(s));
