@@ -69,7 +69,7 @@ public class MillerRabin implements AlgorithmIfc {
         ActionResult<String> result = new ActionResult<>(COMPOSITE);
 
         // Edge cases
-        if (num == 2) {
+        if (num == 2 || num == 3) {
             result.setResult(PRIME);
             return result;
         }
@@ -78,8 +78,8 @@ public class MillerRabin implements AlgorithmIfc {
         }
 
         for (int i = 0; i < probabilityTries; i++) {
-            // Get a random number between 2 to num-1
-            int a = RAND.nextInt(num - 2) + 2;
+            // Get a random number between 2 to num-2 inclusive
+            int a = RAND.nextInt(num - 3) + 2;
 
             ActionResult<Boolean> witnessResult = witness(a, num);
 
@@ -87,6 +87,7 @@ public class MillerRabin implements AlgorithmIfc {
             result.add(witnessResult);
 
             if (witnessResult.getResult().booleanValue()) {
+                System.out.println("Found a witness: " + a);
                 return result;
             }
         }
