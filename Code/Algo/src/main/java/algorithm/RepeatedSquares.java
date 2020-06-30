@@ -74,7 +74,7 @@ public class RepeatedSquares implements AlgorithmIfc {
 
         bits[0] = binary.charAt(amountOfBits - 1) == '1';
         repeatedSquares[0] = a % n; //c0
-        long res = repeatedSquares[0] % n;
+        long res = (bits[0] ? repeatedSquares[0] % n : 1);
         for (int i = 1; i < amountOfBits; i++) {
             // Multiply operation costs amountOfBits^2
             result.countSteps(amountOfBits*amountOfBits);
