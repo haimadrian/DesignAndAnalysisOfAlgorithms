@@ -14,8 +14,8 @@ import java.util.Scanner;
 public interface AlgorithmIfc {
     void execute();
 
+    @SuppressWarnings("IOResourceOpenedButNotSafelyClosed")
     default int readInt(String instruction) {
-        @SuppressWarnings("IOResourceOpenedButNotSafelyClosed")
         Scanner console = new Scanner(System.in);
 
         if (!instruction.isEmpty()) {
@@ -29,14 +29,15 @@ public interface AlgorithmIfc {
                 scan = false;
             } catch (Throwable ignore) {
                 System.err.println("Illegal input. Try again carpenter");
+                console = new Scanner(System.in);
             }
         }
 
         return result;
     }
 
+    @SuppressWarnings("IOResourceOpenedButNotSafelyClosed")
     default double readDouble(String instruction) {
-        @SuppressWarnings("IOResourceOpenedButNotSafelyClosed")
         Scanner console = new Scanner(System.in);
 
         if (!instruction.isEmpty()) {
@@ -50,14 +51,15 @@ public interface AlgorithmIfc {
                 scan = false;
             } catch (Throwable ignore) {
                 System.err.println("Illegal input. Try again carpenter");
+                console = new Scanner(System.in);
             }
         }
 
         return result;
     }
 
+    @SuppressWarnings("IOResourceOpenedButNotSafelyClosed")
     default String readLine(String instruction) {
-        @SuppressWarnings("IOResourceOpenedButNotSafelyClosed")
         Scanner console = new Scanner(System.in);
 
         if (!instruction.isEmpty()) {
@@ -76,6 +78,7 @@ public interface AlgorithmIfc {
                 }
             } catch (Throwable ignore) {
                 System.err.println("Illegal input. Try again carpenter");
+                console = new Scanner(System.in);
             }
         }
 
