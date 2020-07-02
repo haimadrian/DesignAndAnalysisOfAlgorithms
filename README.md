@@ -10,10 +10,10 @@ Useful for Exam answers validation
 * Select a project SDK according to a JDK that you have on your machine. (java 1.8 / java 11, etc.)
 * Main class is: AlgoMain
 * There is already a launcher I created. 
-* At the main maenu: Run -> Edit Configurations: expand "Application" and select "AlgoMain"
+* At the main menu: Run -> Edit Configurations: expand "Application" and select "AlgoMain"
 * Configure a JRE to use, again depends on the JRE you have on your machine, and then "Apply" or "OK"
 * Now you have "AlgoMain" launcher. Run it and crack the exam. 
 
 
-GL & HF  
-Rick Shvetz <3
+GL & HF <3  
+Rick Shvetz
