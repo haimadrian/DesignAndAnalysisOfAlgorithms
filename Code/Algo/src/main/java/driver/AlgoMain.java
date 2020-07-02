@@ -20,6 +20,7 @@ public class AlgoMain {
     public void run(String[] args) {
         System.out.println("Design and Analysis of Algorithms");
         System.out.println("Based on Dr Ayelet Butman presentations. HIT 2020");
+        System.out.println("01/07/2020 - The date where 1 Ayelet overpowered 483 students. LMFAO");
         System.out.println("---------------------------------------------------" + System.lineSeparator());
 
         Algorithm userChoice;

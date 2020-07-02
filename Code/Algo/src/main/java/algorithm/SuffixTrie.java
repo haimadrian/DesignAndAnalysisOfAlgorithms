@@ -22,9 +22,6 @@ public class SuffixTrie implements AlgorithmIfc {
             text += "$";
         }
 
-        //String pattern = "\tBangin' on my drum\n\tBangin' on my drum";
-        String pattern = readLine("Enter pattern to lookup for in the tree: (for example: ana)");
-
         // First build a tree with a node for each character
         // Build and compression are very inefficient but nvm.. Assume it is linear
         SuffixTreeNode root = buildTree();
@@ -36,17 +33,25 @@ public class SuffixTrie implements AlgorithmIfc {
         // Second, compress the tree. (Join nodes)
         compressTree(root);
 
-        // Act
-        ActionResult<List<Integer>> results = find(root, pattern);
-
         // Output
         System.out.println("Text is: " + System.lineSeparator() + text);
         System.out.println("Tree is: ");
         System.out.println(root.toTreeString());
-        System.out.println("Pattern: " + System.lineSeparator() + "\"" + pattern + "\"");
-        System.out.println("|T| = " + text.length() + ",    |P| = " + pattern.length());
-        System.out.println(results.getStepsCount() + " steps took to find all occurrences of pattern in text - O(|P|)");
-        System.out.println("Occurrences of pattern in text are at: " + results.getResult());
+        System.out.println("|T| = " + text.length());
+
+        if (readYesNo("Would you like to enter a pattern to lookup for? (y/n)")) {
+            //String pattern = "\tBangin' on my drum\n\tBangin' on my drum";
+            String pattern = readLine("Enter pattern to lookup for in the tree: (for example: ana)");
+            ActionResult<List<Integer>> results = find(root, pattern);
+
+            System.out.println("Pattern: " + System.lineSeparator() + "\"" + pattern + "\"");
+            System.out.println("|P| = " + pattern.length());
+            System.out.println(results.getStepsCount() + " steps took to find all occurrences of pattern in text - O(|P|)");
+            System.out.println("Occurrences of pattern in text are at: " + results.getResult());
+        }
+
+        System.out.println("Amount of different characters (children of root node): " + root.children.size());
+        System.out.println("Amount of suffixes: " + (text.length() - 1));
     }
 
     /**

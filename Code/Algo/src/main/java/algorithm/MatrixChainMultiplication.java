@@ -17,6 +17,7 @@ public class MatrixChainMultiplication implements AlgorithmIfc {
         int[] matricesDimension = new int[matrixCount + 1];
         System.out.println("Enter the vector representing the matrices dimension. (length=" + (matrixCount + 1) + ")");
         System.out.println("(for example: 5 2 10 5 3, those are the dimensions from the presentation. Result will be: 160)");
+        System.out.println("Note that the numbers should be entered one by another and not in a single line..");
         for (int i = 0; i < matrixCount + 1; i++) {
             matricesDimension[i] = readInt("");
         }
