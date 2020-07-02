@@ -5,7 +5,7 @@ Useful for Exam answers validation
 ## How to open this project in Intellij
 * Clone the repository
 * File->Open
-* Navigate to DesignAndAnalysisOfAlgorithms\Code\Algo and select build.gradle, then open is As Project
+* Navigate to DesignAndAnalysisOfAlgorithms\Code\Algo and select build.gradle, then open it As Project
 * On the project window (left side of Intellij) right click Algo and then "Open Module Settings" (F4)
 * Select a project SDK according to a JDK that you have on your machine. (java 1.8 / java 11, etc.)
 * Main class is: AlgoMain
