@@ -1,6 +1,6 @@
 # Design and Analysis of Algorithms
 Repository to demonstrate algorithms that learnt during DesignAndAnalysisOfAlgorithms course, HIT, year B, 2nd semester.  
-Useful for Exam answers validation
+Useful for Exam preparation
 
 ## How to open this project in Intellij
 * Clone the repository
@@ -13,6 +13,9 @@ Useful for Exam answers validation
 * At the main menu: Run -> Edit Configurations: expand "Application" and select "AlgoMain"
 * Configure a JRE to use, again depends on the JRE you have on your machine, and then "Apply" or "OK"
 * Now you have "AlgoMain" launcher. Run it and crack the exam. 
+
+## Summary
+[Summary-DesignAndAnalysisOfAlgorithms.pdf](https://github.com/haimadrian/SE-Java-Project/blob/master/Summary-DesignAndAnalysisOfAlgorithms.pdf)
 
 
 GL & HF <3  
