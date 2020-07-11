@@ -20,22 +20,31 @@ public class AlgoMain {
     public void run(String[] args) {
         System.out.println("Design and Analysis of Algorithms");
         System.out.println("Based on Dr Ayelet Butman presentations. HIT 2020");
-        System.out.println("01/07/2020 - The date where 1 Ayelet overpowered 483 students. LMFAO");
-        System.out.println("---------------------------------------------------" + System.lineSeparator());
+        System.out.println("01/07/2020 - The date of the big fucking surprise.");
+        System.out.println("-----------------------------------------------------------------" + System.lineSeparator());
+        System.out.println("Follow the instructions of each algorithm carefully!" + System.lineSeparator() +
+                           "Don't paste set of values and don't try to enter illegal values." + System.lineSeparator() +
+                           "When you are being asked to enter several values one by another," + System.lineSeparator() +
+                           "it means you should enter one number, e.g. 10, then press enter" + System.lineSeparator() +
+                           "and only after pressing enter you can enter the next value." + System.lineSeparator() +
+                           "This means that the result of entering, for example, 10 11 in" + System.lineSeparator() +
+                           "a single line is unknown." + System.lineSeparator() +
+                           "Note that this is a free to use utility. You have no one to blame in case of bugs." + System.lineSeparator() +
+                           "GL & HF" + System.lineSeparator());
 
         Algorithm userChoice;
-        while((userChoice = printMenuAndGetUserChoice()) != Algorithm.exit) {
+        while ((userChoice = printMenuAndGetUserChoice()) != Algorithm.exit) {
             if (userChoice == Algorithm.unknown) {
                 System.out.println("Unknown choice, please try again carpenter..");
             } else {
                 try {
-                    System.out.println("============================== " + userChoice.getTitle() + " ==============================");
+                    System.out.println("================================ " + userChoice.getTitle() + " ================================");
                     userChoice.newInstance().execute();
                 } catch (Exception e) {
                     System.err.println("Something went wrong while trying to execute the " + userChoice.name() + " algorithm.");
                     e.printStackTrace();
                 } finally {
-                    System.out.println("===================================================================================");
+                    System.out.println("=============================================================================================");
                 }
             }
 

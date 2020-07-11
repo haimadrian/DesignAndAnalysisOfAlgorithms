@@ -14,7 +14,7 @@ public class KMP implements AlgorithmIfc{
     public void execute() {
         // Arrange
         //String longPattern = "ababbabbababbababbabb";
-        String longPattern = readLine("Enter pattern to compute prefix (PI) for: (for example: ababbabbababbababbabb)");
+        String longPattern = readLine("Enter pattern to compute prefix (\u03A0) for: (for example: ababbabbababbababbabb)");
         boolean search = readYesNo("Would you like to see full search example in action? (y/n)");
 
         // Act
@@ -34,7 +34,7 @@ public class KMP implements AlgorithmIfc{
             System.out.println();
             System.out.println("Text is: " + System.lineSeparator() + text);
             System.out.println("Pattern: " + System.lineSeparator() + "\"" + pattern + "\"");
-            System.out.println("PI: " + Arrays.toString(piForNoaKilaPattern.getResult()));
+            System.out.println("\u03A0: " + Arrays.toString(piForNoaKilaPattern.getResult()));
             System.out.println("|T| = " + text.length() + ",    |P| = " + pattern.length());
             System.out.println(piForNoaKilaPattern.getStepsCount() + " steps took to compute prefix");
             System.out.println(patternOccurrences.getStepsCount() + " steps took to find all occurrences of pattern in text - O(|T|+|P|)");
