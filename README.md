@@ -15,7 +15,7 @@ Useful for Exam preparation
 * Now you have "AlgoMain" launcher. Run it and crack the exam. 
 
 ## Summary
-[Summary-DesignAndAnalysisOfAlgorithms.pdf](https://github.com/haimadrian/SE-Java-Project/blob/master/Summary-DesignAndAnalysisOfAlgorithms.pdf)
+[Summary-DesignAndAnalysisOfAlgorithms.pdf](https://github.com/haimadrian/DesignAndAnalysisOfAlgorithms/blob/master/Summary-DesignAndAnalysisOfAlgorithms.pdf)
 
 
 GL & HF <3  
