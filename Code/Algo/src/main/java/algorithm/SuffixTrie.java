@@ -37,7 +37,7 @@ public class SuffixTrie implements AlgorithmIfc {
         System.out.println("Text is: " + System.lineSeparator() + text);
         System.out.println("Tree is: ");
         System.out.println(root.toTreeString());
-        System.out.println("|T| = " + text.length());
+        System.out.println("|T| = " + (text.length() - 1)); // Don't count the '$'
 
         if (readYesNo("Would you like to enter a pattern to lookup for? (y/n)")) {
             //String pattern = "\tBangin' on my drum\n\tBangin' on my drum";
@@ -51,7 +51,7 @@ public class SuffixTrie implements AlgorithmIfc {
         }
 
         System.out.println("Amount of different characters (children of root node): " + root.children.size());
-        System.out.println("Amount of suffixes: " + (text.length() - 1));
+        System.out.println("Amount of suffixes: " + (text.length() - 1)); // Don't count the '$'
     }
 
     /**

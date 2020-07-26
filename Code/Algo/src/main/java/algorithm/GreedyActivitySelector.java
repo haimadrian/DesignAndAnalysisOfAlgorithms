@@ -49,6 +49,7 @@ public class GreedyActivitySelector implements AlgorithmIfc {
         activitiesString = prettyFormatOfActivities(selectedActivities);
         System.out.println("Selected activities:");
         System.out.println(activitiesString);
+        System.out.println("Please note that there might be several selections! Look above at the activities order and verify it.");
 
     }
 
