@@ -15,7 +15,7 @@ Useful for Exam preparation
 * Now you have "AlgoMain" launcher. Run it and crack the exam. 
 
 ## Summary
-[Summary-DesignAndAnalysisOfAlgorithms.pdf](https://github.com/haimadrian/DesignAndAnalysisOfAlgorithms/blob/master/Summary-DesignAndAnalysisOfAlgorithms.pdf) (_Right click and then "Save link as..."_)
+[Summary-DesignAndAnalysisOfAlgorithms.pdf](https://github.com/haimadrian/DesignAndAnalysisOfAlgorithms/raw/master/Summary-DesignAndAnalysisOfAlgorithms.pdf) (_Right click and then "Save link as..."_)
 
 
 GL & HF <3  
