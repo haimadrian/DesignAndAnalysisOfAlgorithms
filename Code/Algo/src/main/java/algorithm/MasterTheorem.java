@@ -41,8 +41,17 @@ public class MasterTheorem implements AlgorithmIfc {
             System.out.println("Master Theorem - Case 1 - \u03F4(n^logb(a)): n^logb(a)=" + nPowerLog);
             System.out.println("T(n) = \u03F4(" + nPowerLog + ")");
         } else {
+            String func = functionToString("n", m);
+            if (k != 0) {
+                if (k == 1) {
+                    func += " * (logn)";
+                } else {
+                    func += " * " + functionToString("(logn)", k);
+                }
+            }
+
             System.out.println("Master Theorem - Case 3 - \u03F4(f(n)): n^logb(a)=" + nPowerLog);
-            System.out.println("T(n) = \u03F4(" + functionToString("n", m) + ")");
+            System.out.println("T(n) = \u03F4(" + func + ")");
         }
     }
 
